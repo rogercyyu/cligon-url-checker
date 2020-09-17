@@ -12,6 +12,10 @@ In order to use Cligon, please run:
 python cligon.py [file name]
 ```
 
+## Features
+- Colorized Output
+- Version number argument
+
 ## License
 
 MIT
