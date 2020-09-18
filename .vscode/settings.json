@@ -1,9 +1,9 @@
 {
     "python.formatting.provider": "black",
     "python.autoComplete.extraPaths": [
-        "./classes"
+        "./src"
     ],
     "python.analysis.extraPaths": [
-        "./classes"
+        "./src"
     ],
 }

@@ -1,7 +1,7 @@
-from classes.Bcolors import Bcolors
+from src.Bcolors import Bcolors
 
 
-class URLStatus:
+class URLstatus:
     """to collect status of URLs"""
 
     def __init__(self, link, result):
@@ -9,6 +9,7 @@ class URLStatus:
         self.result = result
 
     def color(self):
+        """colorize the URLs by status"""
         if self.result == "bad":
             return Bcolors.RED
         elif self.result == "good":

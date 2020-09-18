@@ -13,8 +13,11 @@ python cligon.py [file name]
 ```
 
 ## Features
-- Colorized Output
+- Colorized output
 - Version number argument
+- URL timeout
+- Parallelism / Multi-threading
+- Grabs HEAD only
 
 ## License
 

@@ -7,6 +7,8 @@ from src.URLchecker import *
 import sys
 
 version = 0.1
+# the time it should wait for until it is considered 'timed out' in seconds
+time_out = 1
 
 # TODO: Change to Python Built in library Argparse.
 def main(argv):
@@ -26,9 +28,9 @@ def main(argv):
     else:
         # run URL scraper
         try:
-            check_url_file(sys.argv[1])
+            check_url_file(sys.argv[1], time_out)
         except FileNotFoundError:
-            print("cligon: File not found. Or command not recognized.")
+            print("cligon: File not found.")
 
 
 if __name__ == "__main__":
