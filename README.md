@@ -11,6 +11,13 @@ In order to use Cligon, please run:
 ```bash
 python cligon.py [file name]
 ```
+Or, if executable privileges are invoked in a Linux environment (chmod +x cligon):
+```bash
+./cligon [file name]
+```
+Please also ensure you have at Python 3.8.2 or higher installed.
+
+Additionally, instructions and options can be viewed by running Cligon without any arguments.
 
 ## Features
 - Colorized output

@@ -40,13 +40,13 @@ def get_url_status(link):
 
     if status_code == 404 or status_code == 400:
         result = "bad"
-        counter.increase_bad()
+        counter.inc_bad()
     elif status_code == 200:
         result = "good"
-        counter.increase_good()
+        counter.inc_good()
     else:
         result = "unknown"
-        counter.increase_unknown()
+        counter.inc_unknown()
 
     url_status = URLstatus(link, result)
     url_status.output()
@@ -54,6 +54,15 @@ def get_url_status(link):
 
 def check_url_file(file_name):
     """The main function, outputs a list of websites and the result of the website"""
+    urls = get_URLs_from_file(file_name)
+
+    pool = ThreadPool(8)
+    pool.map(get_url_status, urls)
+    pool.close()
+    pool.join()
+
+def check_url_file_with_counter(file_name):
+    """The main function, outputs a list of websites and the result of the website with a counter at the end"""
     urls = get_URLs_from_file(file_name)
 
     pool = ThreadPool(8)

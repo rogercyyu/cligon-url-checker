@@ -4,13 +4,13 @@ class Counter:
     unknown_count = 0
     bad_count = 0
 
-    def increase_good(self):
+    def inc_good(self):
         self.good_count += 1
 
-    def increase_bad(self):
+    def inc_bad(self):
         self.bad_count += 1
 
-    def increase_unknown(self):
+    def inc_unknown(self):
         self.unknown_count += 1
 
     def get_total(self):
