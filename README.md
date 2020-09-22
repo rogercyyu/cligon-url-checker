@@ -2,12 +2,13 @@
 
 ## Introduction
 
-C.L.I.G.O.N or Cligon is an acronym which stands for Check if Link Is Good Or Not.
+C.L.I.G.O.N or Cligon is an acronym that stands for Check if Link Is Good Or Not.
 It is designed to check all website links inside a file. This program was written in Python 3.8.2.
+It will return a list of good, bad, or unknown URL statuses.
 
 ## Usage
 
-In order to use Cligon, please run in a terminal of your choice:
+To use Cligon, please run in a terminal of your choice:
 ```bash
 python cligon.py [file name]
 ```
@@ -15,7 +16,7 @@ Or, if executable privileges are invoked in a Linux environment (chmod +x cligon
 ```bash
 ./cligon [file name]
 ```
-To run ensure you have Python 3.8.2 or higher installed. Also, the module requests is also needed, this can be installed by: 
+To run ensure you have Python 3.8.2 or higher installed. Also, the module “requests” is needed, this can be installed by: 
 ```bash
 pip install requests
 ```
@@ -24,7 +25,7 @@ Additionally, instructions and options can be viewed by running Cligon without a
 
 ## Features
 - Colorized output
-- Version number argument with Window and Unix support
+- Version number argument with Windows and Unix support
 - Parallelism / Multi-threading
 - Grabs HEAD only
 - URL timeout
