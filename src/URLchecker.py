@@ -6,11 +6,11 @@ from src.URLstatus import URLstatus
 from multiprocessing.dummy import Pool as ThreadPool
 
 
-class URLchecker:
-    # the time it should wait for until it is considered 'timed out' in seconds
-    def __init__(self):
-        self.time_out = 2.5
+# the time it should wait for until it is considered 'timed out' in seconds
+time_out = 2.5
 
+
+class URLchecker:
     def remove_html(self, text):
         """Remove any html tags, return as string"""
         p = re.compile(r"<.*?>")
@@ -24,9 +24,9 @@ class URLchecker:
         return re.findall(regex, self.remove_html(contents))
 
     def get_url_status(self, link):
-        """Get the status code of the URLs, and return URLstatus obj"""
+        """Get the status code of the URLs, and outputs a list of URLstatus obj"""
         try:
-            status_code = requests.head(link, timeout=self.time_out).status_code
+            status_code = requests.head(link, timeout=time_out).status_code
         except requests.exceptions.Timeout:
             status_code = None
         except requests.exceptions.TooManyRedirects:
@@ -42,7 +42,7 @@ class URLchecker:
             result = "UNKNOWN"
 
         url_status = URLstatus(link, result)
-        return url_status.output()
+        url_status.output()
 
     def check_url_file(self, file_name):
         """The main function, outputs a list of websites and the result of the website"""
