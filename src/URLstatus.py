@@ -1,3 +1,4 @@
+# class to hold URL result and link
 from src.Bcolors import Bcolors
 
 
@@ -10,9 +11,9 @@ class URLstatus:
 
     def color(self):
         """colorize the URLs by status"""
-        if self.result == "bad":
+        if self.result == "BAD":
             return Bcolors.RED
-        elif self.result == "good":
+        elif self.result == "GOOD":
             return Bcolors.GREEN
         else:
             return Bcolors.GREY
@@ -22,7 +23,7 @@ class URLstatus:
             self.color()
             + f"{self.result:7}"
             + Bcolors.ENDCOLOR
-            + "   ===>   "
+            + " -> "
             + self.color()
             + self.link
             + Bcolors.ENDCOLOR
