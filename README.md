@@ -24,10 +24,10 @@ Additionally, instructions and options can be viewed by running Cligon without a
 
 ## Features
 - Colorized output
-- Version number argument
-- URL timeout
+- Version number argument with Window and Unix support
 - Parallelism / Multi-threading
 - Grabs HEAD only
+- URL timeout
 
 ## License
 

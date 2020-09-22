@@ -1,4 +1,5 @@
-class Bcolors:
+# color codes
+class TerminalColors:
     RED = "\033[31m"
     GREEN = "\033[32m"
     YELLOW = "\033[33m"

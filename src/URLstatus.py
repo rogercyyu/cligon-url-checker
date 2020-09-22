@@ -1,4 +1,4 @@
-from src.Bcolors import Bcolors
+from src.TerminalColors import TerminalColors
 
 
 class URLstatus:
@@ -10,20 +10,20 @@ class URLstatus:
 
     def color(self):
         """colorize the URLs by status"""
-        if self.result == "bad":
-            return Bcolors.RED
-        elif self.result == "good":
-            return Bcolors.GREEN
+        if self.result == "BAD":
+            return TerminalColors.RED
+        elif self.result == "GOOD":
+            return TerminalColors.GREEN
         else:
-            return Bcolors.GREY
+            return TerminalColors.GREY
 
     def output(self):
         print(
             self.color()
             + f"{self.result:7}"
-            + Bcolors.ENDCOLOR
-            + "   ===>   "
+            + TerminalColors.ENDCOLOR
+            + " -> "
             + self.color()
             + self.link
-            + Bcolors.ENDCOLOR
+            + TerminalColors.ENDCOLOR
         )
