@@ -29,6 +29,7 @@ Or, if executable privileges are invoked in a Linux environment (chmod +x cligon
 ```bash
 ./cligon [file name]
 ```
+Ensure you make a copy of cligon.py (cp cligon.py cligon) to execute the command above.
 
 Additionally, instructions and options can be viewed by running Cligon without any arguments.
 
