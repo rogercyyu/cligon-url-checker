@@ -9,6 +9,16 @@ It will return a list of good, bad, or unknown URL statuses.
 - bad urls are status codes 400 or 404.
 - unknowns are status codes that aren't bad or good.
 
+## Prerequisite
+To run ensure you have Python 3.8.2 or higher installed. Also, the module “requests” is needed, this can be installed by: 
+```bash
+pip install requests
+```
+If pip is not installed, please try running:
+```bash
+sudo apt install python3-pip
+```
+
 ## Usage
 
 To use Cligon, please run in a terminal of your choice:
@@ -18,14 +28,6 @@ python3 cligon.py [file name]
 Or, if executable privileges are invoked in a Linux environment (chmod +x cligon):
 ```bash
 ./cligon [file name]
-```
-To run ensure you have Python 3.8.2 or higher installed. Also, the module “requests” is needed, this can be installed by: 
-```bash
-pip install requests
-```
-If pip is not installed, please try running:
-```bash
-sudo apt install python3-pip
 ```
 
 Additionally, instructions and options can be viewed by running Cligon without any arguments.

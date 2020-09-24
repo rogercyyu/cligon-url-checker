@@ -19,17 +19,13 @@ def main():
         "--version",
         "-/v",
         help="Display program name and version number",
-        action="store_true",
+        action="version",
+        version="C.L.I.G.O.N (Check if Link Is Good Or Not) - CLIGON - " + str(version),
     )
     args = parser.parse_args()
     try:
-        if args.version:
-            print(
-                "C.L.I.G.O.N (Check if Link Is Good Or Not) - CLIGON - " + str(version)
-            )
-        else:
-            checker = URLchecker()
-            checker.check_url_file(args.filename)
+        checker = URLchecker()
+        checker.check_url_file(args.filename)
     except:
         filename = str(args.filename)
         if os.path.isfile(filename) == False and not filename:
