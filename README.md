@@ -31,11 +31,11 @@ sudo apt install python3-pip
 Additionally, instructions and options can be viewed by running Cligon without any arguments.
 
 ## Features
-- Colorized output
+- Colorized output: good =-green, red = back, grey/white = unknown
 - Version number argument with Windows and Unix support
-- Parallelism / Multi-threading
+- Parallelism / Multi-threading (It's fast ish)
 - Grabs HEAD only
-- URL timeout
+- URL timeout (default 2.5 milliseconds)
 
 ## License
 
