@@ -13,7 +13,7 @@ It will return a list of good, bad, or unknown URL statuses.
 
 To use Cligon, please run in a terminal of your choice:
 ```bash
-python cligon.py [file name]
+python3 cligon.py [file name]
 ```
 Or, if executable privileges are invoked in a Linux environment (chmod +x cligon):
 ```bash
