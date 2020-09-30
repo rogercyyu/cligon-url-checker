@@ -10,13 +10,23 @@ It will return a list of good, bad, or unknown URL statuses.
 - unknowns are status codes that aren't bad or good.
 
 ## Prerequisite
-To run ensure you have Python 3.8.2 or higher installed. Also, the module “requests” is needed, this can be installed by: 
-```bash
-pip install requests
-```
-If pip is not installed, please try running:
+
+If pip is not installed, install pip by running:
 ```bash
 sudo apt install python3-pip
+```
+pip is the standard package-management system used to install and manage software packages written in Python.
+
+### Use virtualenv
+
+```shell script
+$ virtualenv .
+$ source bin/activate
+```
+### Install packages
+
+```shell script
+$ pip install -r requirements.txt
 ```
 
 ## Usage
