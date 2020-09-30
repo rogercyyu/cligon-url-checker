@@ -19,13 +19,13 @@ pip is the standard package-management system used to install and manage softwar
 
 ### Use virtualenv
 
-```shell script
+```bash
 $ virtualenv .
 $ source bin/activate
 ```
 ### Install packages
 
-```shell script
+```bash
 $ pip install -r requirements.txt
 ```
 
