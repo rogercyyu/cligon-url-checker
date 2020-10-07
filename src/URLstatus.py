@@ -4,9 +4,10 @@ from src.TerminalColors import TerminalColors
 class URLstatus:
     """to collect status of URLs"""
 
-    def __init__(self, link, result):
+    def __init__(self, link, result, code):
         self.link = link
         self.result = result
+        self.code = code
 
     def color(self):
         """colorize the URLs by status"""
@@ -27,3 +28,6 @@ class URLstatus:
             + self.link
             + TerminalColors.ENDCOLOR
         )
+
+    def output_as_json(self):
+        print("{ \"url\": \"" + self.link + "\", \"status\": \"" + str(self.code) + "\" },", file=open("output.json", "a"))

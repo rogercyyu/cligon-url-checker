@@ -45,10 +45,11 @@ Additionally, instructions and options can be viewed by running Cligon without a
 
 ## Features
 - Colorized output: good = green, red = back, grey/white = unknown
-- Version number argument with Windows and Unix support
+- Version number argument
 - Parallelism / Multi-threading (It's fast-ish)
 - Grabs HEAD only
 - URL timeout (default 2.5 milliseconds)
+- Output JSON file
 
 ## License
 
