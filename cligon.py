@@ -22,10 +22,13 @@ def main():
         action="version",
         version="C.L.I.G.O.N (Check if Link Is Good Or Not) - CLIGON - " + str(version),
     )
+    parser.add_argument("--all", action="store_true", help="default, output all url types")
+    parser.add_argument("--good", action="store_true", help="only display good urls")
+    parser.add_argument("--bad", action="store_true", help="only display bad urls")
     args = parser.parse_args()
     try:
         checker = URLchecker()
-        checker.check_url_file(args.filename)
+        checker.check_url_file(args.filename, args)
     except:
         filename = str(args.filename)
         if os.path.isfile(filename) == False and not filename:

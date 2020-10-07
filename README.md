@@ -49,6 +49,7 @@ Additionally, instructions and options can be viewed by running Cligon without a
 - Parallelism / Multi-threading (It's fast-ish)
 - Grabs HEAD only
 - URL timeout (default 2.5 milliseconds)
+- Output only good or bad urls
 
 ## License
 
