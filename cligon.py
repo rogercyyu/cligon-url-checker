@@ -22,7 +22,7 @@ def main():
         version="C.L.I.G.O.N (Check if Link Is Good Or Not) - CLIGON - " + str(version),
     )
     parser.add_argument(
-        "-j", "--json", action="store_true", help="output program results into a JSON file"
+        "-j", "--json", action="store_true", help="output program results into JSON format"
     )
     parser.add_argument("--all", action="store_true", help="default, output all url types")
     parser.add_argument("--good", action="store_true", help="only display good urls")

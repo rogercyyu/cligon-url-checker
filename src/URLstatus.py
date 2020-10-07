@@ -9,6 +9,9 @@ class URLstatus:
         self.result = result
         self.code = code
 
+    def getResult(self):
+        return self.result
+
     def color(self):
         """colorize the URLs by status"""
         if self.result == "BAD":

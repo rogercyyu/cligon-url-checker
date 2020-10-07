@@ -47,17 +47,28 @@ class URLchecker:
         """The main function, outputs a list of websites and the result of the website"""
         urls = self.get_URLs_from_file(file_name)
         pool = ThreadPool(10)
-        result_list = pool.map(self.get_url_status, urls)
+        URLstatus_list = pool.map(self.get_url_status, urls)
         pool.close()
         pool.join()
 
+        output_list = []
+
+        for URLstatus in URLstatus_list:
+            if args.good and URLstatus.getResult() == "GOOD":
+                output_list.append(URLstatus)
+            elif args.bad and URLstatus.getResult() == "BAD":
+                output_list.append(URLstatus)
+            elif not args.bad and not args.good:    
+                output_list.append(URLstatus)
+
         if args.json:
             print("[")
-
-        for i, result in enumerate(result_list):
-            if i:
-                print(',')
-            print(result.output(args), end='')
-
-        if args.json:
+            for i, URLstatus in enumerate(output_list):
+                if i and args.json:
+                    print(',')
+                print(URLstatus.output(args), end='')
             print("\n]")
+        else:
+            for URLstatus in output_list:
+                print(URLstatus.output(args))
+                
