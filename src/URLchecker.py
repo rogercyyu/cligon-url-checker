@@ -61,14 +61,15 @@ class URLchecker:
             elif not args.bad and not args.good:    
                 output_list.append(URLstatus)
 
+        del URLstatus_list
+
         if args.json:
             print("[")
             for i, URLstatus in enumerate(output_list):
-                if i and args.json:
+                if i: # print comma if not 0
                     print(',')
                 print(URLstatus.output(args), end='')
             print("\n]")
         else:
             for URLstatus in output_list:
                 print(URLstatus.output(args))
-                
