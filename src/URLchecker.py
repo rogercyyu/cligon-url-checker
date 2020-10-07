@@ -44,20 +44,11 @@ class URLchecker:
 
         url_status = URLstatus(link, result, status_code)
         if args.good and result == "GOOD":
-            if args.json:
-                url_status.output_as_json()
-            else:
-                url_status.output()
+            url_status.output(args)
         elif args.bad and result == "BAD":
-            if args.json:
-                url_status.output_as_json()
-            else:
-                url_status.output()
+            url_status.output(args)
         elif not args.bad and not args.good:
-            if args.json:
-                url_status.output_as_json()
-            else:
-                url_status.output()
+            url_status.output(args)
 
     def check_url_file(self, file_name, args):
         """The main function, outputs a list of websites and the result of the website"""

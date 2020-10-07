@@ -18,16 +18,19 @@ class URLstatus:
         else:
             return TerminalColors.GREY
 
-    def output(self):
-        print(
-            self.color()
-            + f"{self.result:7}"
-            + TerminalColors.ENDCOLOR
-            + " -> "
-            + self.color()
-            + self.link
-            + TerminalColors.ENDCOLOR
-        )
-
-    def output_as_json(self):
-        print("{ \"url\": \"" + self.link + "\", \"status\": \"" + str(self.code) + "\" },", file=open("output.json", "a"))
+    def output(self, args):
+        if args.json:
+            print(
+                '{ "url": "' + self.link + '", "status": "' + str(self.code) + '" },',
+                file=open("output.json", "a"),
+            )
+        else:
+            print(
+                self.color()
+                + f"{self.result:7}"
+                + TerminalColors.ENDCOLOR
+                + " -> "
+                + self.color()
+                + self.link
+                + TerminalColors.ENDCOLOR
+            )
