@@ -20,12 +20,9 @@ class URLstatus:
 
     def output(self, args):
         if args.json:
-            print(
-                '{ "url": "' + self.link + '", "status": "' + str(self.code) + '" },',
-                file=open("output.json", "a"),
-            )
+            return '{ "url": "' + self.link + '", "status": "' + str(self.code) + '" }'
         else:
-            print(
+            return (
                 self.color()
                 + f"{self.result:7}"
                 + TerminalColors.ENDCOLOR
