@@ -50,6 +50,7 @@ Additionally, instructions and options can be viewed by running Cligon without a
 - Grabs HEAD only
 - URL timeout (default 2.5 milliseconds)
 - Output JSON file
+- Output only good or bad urls
 
 ## License
 

@@ -5,7 +5,7 @@ import requests
 from src.URLstatus import URLstatus
 from multiprocessing.dummy import Pool as ThreadPool
 from itertools import repeat
-
+import os
 
 # the time it should wait for until it is considered 'timed out' in seconds
 time_out = 2.5
@@ -43,15 +43,28 @@ class URLchecker:
             result = "UNKNOWN"
 
         url_status = URLstatus(link, result, status_code)
-        if args.json:
-            url_status.output_as_json()
-        else:
-            url_status.output()
-
+        if args.good and result == "GOOD":
+            if args.json:
+                url_status.output_as_json()
+            else:
+                url_status.output()
+        elif args.bad and result == "BAD":
+            if args.json:
+                url_status.output_as_json()
+            else:
+                url_status.output()
+        elif not args.bad and not args.good:
+            if args.json:
+                url_status.output_as_json()
+            else:
+                url_status.output()
 
     def check_url_file(self, file_name, args):
         """The main function, outputs a list of websites and the result of the website"""
         urls = self.get_URLs_from_file(file_name)
+
+        if os.path.exists("output.json"):
+            os.remove("output.json")
 
         if args.json:
             print("[", file=open("output.json", "a"))

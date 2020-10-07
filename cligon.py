@@ -24,6 +24,9 @@ def main():
     parser.add_argument(
         "-j", "--json", action="store_true", help="output program results into a JSON file"
     )
+    parser.add_argument("--all", action="store_true", help="default, output all url types")
+    parser.add_argument("--good", action="store_true", help="only display good urls")
+    parser.add_argument("--bad", action="store_true", help="only display bad urls")
     args = parser.parse_args()
     try:
         checker = URLchecker()
