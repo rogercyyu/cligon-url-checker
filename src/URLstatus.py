@@ -9,7 +9,7 @@ class URLstatus:
         self.result = result
         self.code = code
 
-    def getResult(self):
+    def get_result_name(self):
         return self.result
 
     def color(self):
