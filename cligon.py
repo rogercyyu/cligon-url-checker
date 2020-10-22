@@ -34,9 +34,10 @@ def main():
     parser.add_argument("--bad", action="store_true", help="only display bad urls")
     args = parser.parse_args()
     try:
+        time_out = 2.5
         checker = URLchecker()
         urls = checker.parse_urls_from_file(args.filename)
-        urls_status_list = checker.check_urls_thread(urls)
+        urls_status_list = checker.check_urls_thread(urls, time_out)
         checker.output_urls_and_status(urls_status_list, args)
         del urls_status_list
     except:

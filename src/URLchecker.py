@@ -4,6 +4,7 @@ import re
 import requests
 from src.URLstatus import URLstatus
 from multiprocessing.dummy import Pool as ThreadPool
+from itertools import repeat
 
 # the time it should wait for until it is considered 'timed out' in seconds
 time_out = 2.5
@@ -22,7 +23,7 @@ class URLchecker:
         contents = fp.read()
         return re.findall(regex, self.remove_html_tags(contents))
 
-    def get_url_status_code(self, link):
+    def get_url_status_code(self, link, time_out):
         """Get the status code of the URLs, and outputs a list of URLstatus obj"""
         try:
             status_code = requests.head(link, timeout=time_out).status_code
@@ -42,10 +43,10 @@ class URLchecker:
 
         return URLstatus(link, result_name, status_code)
 
-    def check_urls_thread(self, urls):
+    def check_urls_thread(self, urls, time_out):
         """Check urls by starting threads"""
         pool = ThreadPool(10)
-        url_status_list = pool.map(self.get_url_status_code, urls)
+        url_status_list = pool.starmap(self.get_url_status_code, zip(urls, repeat(time_out)))
         pool.close()
         pool.join()
 
