@@ -1,30 +1,30 @@
-# This function is used to get any URLs in a file.
-# Written in Python 3.8.2
+"""
+This function is used to get any URLs in a file.
+Written in Python 3.8.2
+"""
 import re
-import requests
-from src.URLstatus import URLstatus
-from multiprocessing.dummy import Pool as ThreadPool
 from itertools import repeat
+from multiprocessing.dummy import Pool as ThreadPool
+import requests
+from .url_status import UrlStatus
 
-# the time it should wait for until it is considered 'timed out' in seconds
-time_out = 2.5
 
-
-class URLchecker:
+class UrlChecker:
+    """contains methods to help check url"""
     def remove_html_tags(self, text):
         """Remove any html tags, return as string"""
-        p = re.compile(r"<.*?>")
-        return p.sub("", text)
+        new_text = re.compile(r"<.*?>")
+        return new_text.sub("", text)
 
     def parse_urls_from_file(self, file_name):
         """Get URLs using regex, return as an array of strings"""
         regex = r"(?P<url>https?://[^\s]+)"
-        fp = open(file_name)
-        contents = fp.read()
+        file = open(file_name)
+        contents = file.read()
         return re.findall(regex, self.remove_html_tags(contents))
 
     def get_url_status_code(self, link, time_out):
-        """Get the status code of the URLs, and outputs a list of URLstatus obj"""
+        """Get the status code of the URLs, and outputs a list of url_status obj"""
         try:
             status_code = requests.head(link, timeout=time_out).status_code
         except requests.exceptions.Timeout:
@@ -34,19 +34,21 @@ class URLchecker:
         except requests.exceptions.RequestException:
             status_code = None
 
-        if status_code == 404 or status_code == 400:
+        if status_code in (400, 404):
             result_name = "BAD"
         elif status_code == 200:
             result_name = "GOOD"
         else:
             result_name = "UNKNOWN"
 
-        return URLstatus(link, result_name, status_code)
+        return UrlStatus(link, result_name, status_code)
 
     def check_urls_thread(self, urls, time_out):
         """Check urls by starting threads"""
         pool = ThreadPool(10)
-        url_status_list = pool.starmap(self.get_url_status_code, zip(urls, repeat(time_out)))
+        url_status_list = pool.starmap(
+            self.get_url_status_code, zip(urls, repeat(time_out))
+        )
         pool.close()
         pool.join()
 
@@ -56,21 +58,21 @@ class URLchecker:
         """Outputs a list of websites and the result of the website"""
         output_list = []
 
-        for URLstatus in urls_status_list:
-            if args.good and URLstatus.get_result_name() == "GOOD":
-                output_list.append(URLstatus)
-            elif args.bad and URLstatus.get_result_name() == "BAD":
-                output_list.append(URLstatus)
+        for url_status in urls_status_list:
+            if args.good and url_status.get_result_name() == "GOOD":
+                output_list.append(url_status)
+            elif args.bad and url_status.get_result_name() == "BAD":
+                output_list.append(url_status)
             elif not args.bad and not args.good:
-                output_list.append(URLstatus)
+                output_list.append(url_status)
 
         if args.json:
             print("[")
-            for i, URLstatus in enumerate(output_list):
+            for i, url_status in enumerate(output_list):
                 if i:  # print comma if not 0
                     print(",")
-                print(URLstatus.output(args), end="")
+                print(url_status.output(args), end="")
             print("\n]")
         else:
-            for URLstatus in output_list:
-                print(URLstatus.output(args))
+            for url_status in output_list:
+                print(url_status.output(args))
