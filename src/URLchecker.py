@@ -42,25 +42,26 @@ class URLchecker:
 
         return URLstatus(link, result_name, status_code)
 
-    def output_urls_and_status(self, file_name, args):
-        """The main function, outputs a list of websites and the result of the website"""
-        urls = self.parse_urls_from_file(file_name)
+    def check_urls_thread(self, urls):
+        """Check urls by starting threads"""
         pool = ThreadPool(10)
-        URLstatus_list = pool.map(self.get_url_status_code, urls)
+        url_status_list = pool.map(self.get_url_status_code, urls)
         pool.close()
         pool.join()
 
+        return url_status_list
+
+    def output_urls_and_status(self, urls_status_list, args):
+        """Outputs a list of websites and the result of the website"""
         output_list = []
 
-        for URLstatus in URLstatus_list:
+        for URLstatus in urls_status_list:
             if args.good and URLstatus.get_result_name() == "GOOD":
                 output_list.append(URLstatus)
             elif args.bad and URLstatus.get_result_name() == "BAD":
                 output_list.append(URLstatus)
             elif not args.bad and not args.good:
                 output_list.append(URLstatus)
-
-        del URLstatus_list
 
         if args.json:
             print("[")
