@@ -1,0 +1,3 @@
+[flake8]
+exclude = .venv/, .vscode/, .git, .gitignore, ./test_files
+max-line-length = 100

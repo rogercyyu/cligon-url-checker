@@ -11,6 +11,7 @@ from .url_status import UrlStatus
 
 class UrlChecker:
     """contains methods to help check url"""
+
     def remove_html_tags(self, text):
         """Remove any html tags, return as string"""
         new_text = re.compile(r"<.*?>")

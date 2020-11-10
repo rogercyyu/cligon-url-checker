@@ -9,27 +9,8 @@ It will return a list of good, bad, or unknown URL statuses.
 - bad urls are status codes 400 or 404.
 - unknowns are status codes that aren't bad or good.
 
-## Prerequisite
-
-If pip is not installed, install pip by running:
-```bash
-sudo apt install python3-pip
-```
-pip is the standard package-management system used to install and manage software packages written in Python.
-
-### Use virtualenv
-
-```shell script
-$ virtualenv .
-$ source bin/activate
-```
-### Install packages
-
-```shell script
-$ pip install -r requirements.txt
-```
-
 ## Usage
+For prerequisites please see [CONTRIBUTING](./CONTRIBUTING.md).
 
 To use Cligon, please run in a terminal of your choice:
 ```bash
