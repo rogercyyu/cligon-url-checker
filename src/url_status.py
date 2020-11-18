@@ -15,6 +15,10 @@ class UrlStatus:
         """return result"""
         return self.result
 
+    def get_status_code(self):
+        """return status code"""
+        return self.code
+
     def color(self):
         """colorize the URLs by status"""
         if self.result == "BAD":
