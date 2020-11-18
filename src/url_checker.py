@@ -55,11 +55,11 @@ class UrlChecker:
 
         return url_status_list
 
-    def output_urls_and_status(self, urls_status_list, args):
+    def output_urls_and_status(self, url_status_list, args):
         """Outputs a list of websites and the result of the website"""
         output_list = []
 
-        for url_status in urls_status_list:
+        for url_status in url_status_list:
             if args.good and url_status.get_result_name() == "GOOD":
                 output_list.append(url_status)
             elif args.bad and url_status.get_result_name() == "BAD":
