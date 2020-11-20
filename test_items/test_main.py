@@ -116,7 +116,7 @@ def test_status_output_json(url_checker, create_parser):
 
 @responses.activate
 def test_status_output(url_checker, create_parser):
-    answer_str = "\x1b[31mBAD    \x1b[0m -> \x1b[31mhttp://www.test.com\x1b[0m "
+    answer_str = "\x1b[31mBAD    \x1b[0m -> \x1b[31mhttp://www.test.com\x1b[0m"
     parser = create_parser
     parsed = parser.parse_args()
     url = "http://www.test.com"
