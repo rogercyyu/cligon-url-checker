@@ -69,6 +69,13 @@ To see test code coverage report:
 ```bash
 coverage report -m
 ```
+Any tests are welcome. Even tests that are similar to existing tests.
+
+Currently there is no organization to the tests except they are designed to test [UrlChecker](src/url_checker.py) and [UrlStatus](src/url_status.py).
+
+An area they may need some tests is [cligon.py](./cligon.py).
+
+Also, please note, when writing assert test for the output, ensure to remember to put color codes to match the output of the teriminal.
 
 ## Pull Requests
 Once the above items are installed, you can simply edit any file to your desire.
