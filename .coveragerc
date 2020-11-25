@@ -1,4 +1,5 @@
 [run]
 include = 
+    src/cligon.py
     src/url_checker.py
     src/url_status.py

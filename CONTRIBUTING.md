@@ -73,7 +73,7 @@ Any tests are welcome. Even tests that are similar to existing tests.
 
 Currently there is no organization to the tests except they are designed to test [UrlChecker](src/url_checker.py) and [UrlStatus](src/url_status.py).
 
-An area they may need some tests is [cligon.py](./cligon.py).
+An area they may need some tests is [cligon.py](src/cligon.py).
 
 Also, please note, when writing assert test for the output, ensure to remember to put color codes to match the output of the teriminal.
 
