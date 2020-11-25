@@ -7,15 +7,40 @@ Written in Python 3.8.2
 
 import sys
 import argparse
-from src.url_checker import UrlChecker
+
+try:
+    from src import url_checker
+except ModuleNotFoundError:
+    import url_checker
+
+UrlChecker = url_checker.UrlChecker
 
 VERSION = 0.1
 
 
 def main():
     """cligon main function"""
+
+    try:
+        args = process_arguments(sys.argv[1:])
+
+        time_out = 2.5
+        checker = UrlChecker()
+        urls = checker.parse_urls_from_file(args.filename)
+        urls_status_list = checker.check_urls_thread(urls, time_out)
+        checker.output_urls_and_status(urls_status_list, args)
+        del urls_status_list
+    except FileNotFoundError as e:
+        print(e)
+
+    return sys.exit(0)
+
+
+def process_arguments(args):
+    """Process the system arguments using argparser"""
+
     parser = argparse.ArgumentParser()
-    parser.add_argument("filename", nargs="?", help="input file to check URL links")
+    parser.add_argument("filename", help="input file to check URL links")
     parser.add_argument(
         "-v",
         "--version",
@@ -34,21 +59,8 @@ def main():
     )
     parser.add_argument("--good", action="store_true", help="only display good urls")
     parser.add_argument("--bad", action="store_true", help="only display bad urls")
-    args = parser.parse_args()
-    if args.filename:
-        try:
-            time_out = 2.5
-            checker = UrlChecker()
-            urls = checker.parse_urls_from_file(args.filename)
-            urls_status_list = checker.check_urls_thread(urls, time_out)
-            checker.output_urls_and_status(urls_status_list, args)
-            del urls_status_list
-        except FileNotFoundError:
-            print("error: inputted file not found")
-    else:
-        parser.print_help()
 
-    return sys.exit(0)
+    return parser.parse_args(args)
 
 
 if __name__ == "__main__":
