@@ -1,5 +1,10 @@
 """class for url statuses"""
-from .terminal_colors import TerminalColors
+try:
+    from src import terminal_colors
+except ModuleNotFoundError:
+    import terminal_colors
+
+TerminalColors = terminal_colors.TerminalColors
 
 
 class UrlStatus:

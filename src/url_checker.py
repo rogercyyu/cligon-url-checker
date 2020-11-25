@@ -6,7 +6,13 @@ import re
 from itertools import repeat
 from multiprocessing.dummy import Pool as ThreadPool
 import requests
-from .url_status import UrlStatus
+
+try:
+    from src import url_status
+except ModuleNotFoundError:
+    import url_status
+
+UrlStatus = url_status.UrlStatus
 
 
 class UrlChecker:
