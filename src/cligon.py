@@ -15,7 +15,7 @@ except ModuleNotFoundError:
 
 UrlChecker = url_checker.UrlChecker
 
-VERSION = 0.1
+VERSION = 1.0
 
 
 def main():
