@@ -1,11 +1,11 @@
 from setuptools import find_packages, setup
 
-with open("README.md", "r") as fh:
+with open("README-PyPi.md", "r") as fh:
     long_description = fh.read()
 
 setup(
     name="cligon",
-    version="1.0.0",
+    version="1.0.2",
     author="Roger Yu",
     author_email="rogeryu27@gmail.com",
     description="A small program to check the status of URLs",
